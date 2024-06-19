@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Data - Oil Management System</title>
+    
+    <!-- <link rel="stylesheet" href="public/styles.css"> -->
+<style>
+    body {
+            font-family: 'Product Sans', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #ff6f00;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header img {
+            width: 100px;
+        }
+        h1 {
+            color: #ff6f00;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #ff6f00;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e65c00;
+        }
+
+</style>
+<style>
+    body {
+    font-family: 'Product Sans', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.logo {
+    width: 150px;
+}
+
+button, .button {
+    display: inline-block;
+    margin: 10px;
+    padding: 0;
+    font-size: 16px;
+    color: white;
+    background-color: #ff6600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+    height: 150px;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+button:hover, .button:hover {
+    background-color: #cc5200;
+}
+
+.button img {
+    max-width: 100%;
+    max-height: 70%;
+}
+
+.button span {
+    display: block;
+    margin-top: 10px;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 90%;
+    background-color: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: white;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+th, td {
+    text-align: center;
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <img src="indian-oil-logo.png" alt="Indian Oil Logo">
+    </header>
+        <h1>Oil Management System - View Data</h1>
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Serial No.</th>
+                    <th>Product Name</th>
+                    <th>User Name</th>
+                    <th>Quantity</th>
+                    <th>Customer Name</th>
+                    <th>Date and Time</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    
+
+    <script>
+        const password = prompt('Enter admin password:');
+        if (password !== '1') {
+            alert('Invalid password. Access denied.');
+            window.location.href = 'http://localhost:3000/'; // Redirect to login page
+        }
+    </script>
+    
+    <script>
+        fetch('/fetch-data')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+                data.forEach((row, index) => {
+                    const tr = document.createElement('tr');
+                    const serialTd = document.createElement('td');
+                    serialTd.textContent = index + 1;
+                    tr.appendChild(serialTd);
+                    Object.values(row).forEach(value => {
+                        const td = document.createElement('td');
+                        td.textContent = value;
+                        tr.appendChild(td);
+                    });
+                    tbody.appendChild(tr);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oil Management System</title>
+
+     <style>
+        body {
+            font-family: 'Product Sans', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #ff6f00;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header img {
+            width: 100px;
+        }
+        h1 {
+            color: #ff6f00;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #ff6f00;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e65c00;
+        }
+
+     </style>
+    
+</head>
+<body>
+    <header>
+        <img src="indian-oil-logo.png" alt="Indian Oil Logo">
+    </header>
+    
+    <h1>Oil Management System</h1>
+    <div class="container">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <select id="username">
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password">
+        </div>
+        <button onclick="login()">Submit</button>
+        <p id="error-message" style="color: red;"></p>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const data = { username, password };
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    window.location.href = data.redirectUrl;
+                } else {
+                    document.getElementById('error-message').innerText = 'Invalid username or password';
+                }
+            })
+            .catch((error) => console.error('Error:', error));
+        }
+        
+    </script>
+</body>
+</html>

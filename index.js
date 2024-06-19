@@ -16,12 +16,12 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname)));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'login.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Serve login page for admin and user pages without proper authentication
 app.get(['/admin.html', '/user.html'], (req, res) => {
-    res.sendFile(path.join(__dirname,'login.html'));
+    res.sendFile(path.join(__dirname,'index.html'));
 });
 
 // Serve admin page with authentication check

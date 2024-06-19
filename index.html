@@ -88,37 +88,6 @@
         <p id="error-message" style="color: red;"></p>
     </div>
 
-    <form id="oilForm">
-        <!-- Form elements -->
-        <button type="submit">Submit</button>
-    </form>
-
-    <script>
-        document.getElementById('oilForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = {
-                "product name": formData.get('product-name'),
-                "user name": formData.get('user-name'),
-                quantity: formData.get('quantity'),
-                "customer name": formData.get('customer-name'),
-                "date and time": new Date().toISOString(),
-                price: formData.get('price')
-            };
-
-            const response = await fetch('/api/save', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-
-            const result = await response.json();
-            alert(result.message);
-        });
-    </script>
-
     <script>
         function login() {
             const username = document.getElementById('username').value;

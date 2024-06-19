@@ -27,8 +27,8 @@ Follow these steps to set up the project locally:
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/oil-management-system.git
-    cd oil-management-system
+    git clone https://github.com/your-username/inventory-management-system.git
+    cd inventory-management-system
     ```
 
 2. **Install dependencies**:
@@ -38,7 +38,7 @@ Follow these steps to set up the project locally:
 
 3. **Run the server**:
     ```bash
-    node app.js
+    node index.js
     ```
 
 4. **Open the application in your browser**:

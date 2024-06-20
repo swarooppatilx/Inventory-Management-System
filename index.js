@@ -80,6 +80,11 @@ app.post('/logout', (req, res) => {
     res.json({ status: 'success' });
 });
 
+// Error handling
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
 
 
 app.listen(PORT, () => {

@@ -62,7 +62,7 @@ app.post('/login', (req, res) => {
             });
         }
 
-        const redirectUrl = username === 'admin' ? 'http://localhost:3001/admin.html' : 'http://localhost:3001/user.html';
+        const redirectUrl = username === 'admin' ? '/admin.html' : '/user.html';
         res.json({ status: 'success', redirectUrl });
     } else {
         res.json({ status: 'error' });

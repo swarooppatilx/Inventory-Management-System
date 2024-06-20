@@ -45,7 +45,7 @@ app.get('/user', (req, res) => {
 });
 
 
-app.post('/login', (req, res) => {
+app.get('/login', (req, res) => {
     const { username, password } = req.body;
 
     if (users[username] && users[username] === password) {

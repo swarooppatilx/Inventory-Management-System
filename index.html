@@ -224,7 +224,7 @@
                 const result = await response.json();
 
                 if (result.status === 'success') {
-                    window.location.href = result.redirectUrl;
+                    window.location.href = '/view-data.html;
                 } else {
                     document.getElementById('error-message').innerText = 'Invalid username or password';
                 }
